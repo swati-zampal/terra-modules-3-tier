@@ -7,5 +7,6 @@ variable "web_cidr"{
 variable "app_cidr"{}
   
 variable "db_cidr"{}
-  
+variable "vpc-id" {
+}
 

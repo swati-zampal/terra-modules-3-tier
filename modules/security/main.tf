@@ -1,6 +1,7 @@
 resource "aws_security_group" "web-sg"{
   name = "websg"
   description = "To attach with websever"
+  vpc_id = var.vpc-id
   ingress {
     from_port = 22
     to_port = 22
@@ -25,6 +26,7 @@ resource "aws_security_group" "web-sg"{
 resource "aws_security_group" "app-sg"{
   name = "appsg"
   description = "To attach with appserver"
+  vpc_id = var.vpc-id
   ingress {
     from_port = 22
     to_port = 22
@@ -49,6 +51,7 @@ resource "aws_security_group" "app-sg"{
 resource "aws_security_group" "db-sg"{
   name = "dbsg"
   description = "To attach with dbserver"
+  vpc_id = var.vpc-id
   ingress {
     from_port = 22
     to_port = 22
@@ -69,5 +72,13 @@ resource "aws_security_group" "db-sg"{
   }
 }
 
-
+output "web-sg-id" {
+  value = aws_security_group.web-sg.id
+}
+output "app-sg-id" {
+  value = aws_security_group.app-sg.id
+}
+output "db-sg-id" {
+  value = aws_security_group.db-sg.id
+}
   
